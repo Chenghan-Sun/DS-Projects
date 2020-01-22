@@ -1,15 +1,14 @@
 from fastq_reader import *
 
 def cal_base_quality(file_path, base_list, seq_name="", seq_qscore="", k=0):
-    """ Main function for Exercise 4
-        Inputs: 
+    """ Summary:
+            Main function for Exercise 4
+            Iterates through the file, and calculates the average quality of each of the 5 bases (A,T,G,C,N)
+        Parameters: 
             file_path: relative path of the text file
             base_list: list of the 5 bases (A,T,G,C,N)
-            seq_name: initialized DNA sequence 
-            seq_qscore: initialized sequence quality score
-            k: index of lines
-        Outputs:
-            printoout the average quality of each of the 5 bases (A,T,G,C,N)
+        Returns:
+            printout the average quality of each of the 5 bases (A,T,G,C,N)
     """
     base_quality_dict = {}
     num_base = 0 # initialize number of certain type of DNA base
@@ -37,3 +36,8 @@ def cal_base_quality(file_path, base_list, seq_name="", seq_qscore="", k=0):
     for base in base_list:
         aq_score = base_quality_dict[base][1] / base_quality_dict[base][0] # average quality score 
         print("base: {}, quality: {}".format(base, aq_score))
+
+# Test:
+cleaned_file = '../data/cleaned_file.fastq'
+base_list = ["A","T","G","C","N"]
+cal_base_quality(cleaned_file, base_list)
